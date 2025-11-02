@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alla Sankar Anudeep Reddy - AI/ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet" />
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background:
+      radial-gradient(circle 1.3px at 0 0, #5a4be3 92%, transparent 95%),
+      linear-gradient(#0c0b43 1px, transparent 1px),
+      linear-gradient(90deg, #0c0b43 1px, #0a0a23 1px),
+      linear-gradient(120deg, #07063f, #1f0752);
+    background-repeat: repeat, repeat, repeat, no-repeat;
+    background-size: 30px 30px, 30px 30px, 30px 30px, 100% 100%;
+    color: #eee;
+    overflow-x: hidden;
+    transition: background-color 0.4s, color 0.4s;
+  }
+  /* Light mode */
+  body.light-mode {
+    background: #eae7fe;
+    color: #251e5e;
+  }
+  body.light-mode a {
+    color: #5f35f5;
+  }
+  body.light-mode a:hover {
+    color: #a18fff;
+  }
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 70px;
+    background: rgba(21,17,54,0.93);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.16);
+    padding: 0 20px;
+  }
+  .nav-center-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex; gap: 28px;
+  }
+  nav ul li a, #themeToggle {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #ad9cfb;
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border: none;
+    outline: none;
+  }
+  nav ul li a:hover, #themeToggle:hover {
+    background-color: #765bee;
+    color: white;
+  }
+  #themeToggle {
+    background: #7e5fff;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 16px;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 16px;
+  }
+  .hero-intro {
+    margin-top: 110px;
+    max-width: 1040px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    min-height: 95vh;
+    padding: 0 12px 60px;
+  }
+  .hero-intro h1 {
+    font-weight: 900;
+    font-size: clamp(2.6rem, 6vw, 3rem);
+    background: linear-gradient(90deg, #a584f5 50%, #7246e0 97%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.12;
+    margin-bottom: 0.3em;
+    user-select: none;
+  }
+  .hero-intro h2 {
+    color: #f3eaff;
+    font-weight: 800;
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    margin-bottom: 6px;
+  }
+  .hero-intro h3 {
+    color: #b7aefbcc;
+    font-weight: 600;
+    font-size: 1.15rem;
+    max-width: 480px;
+    margin: 16px auto 38px;
+  }
+  .hero-intro button {
+    padding: 16px 48px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #a584f5, #7246e0);
+    color: white;
+    font-weight: 900;
+    font-size: 1.18rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 40px #a184f5ba;
+    transition: box-shadow 0.3s, transform 0.22s;
+  }
+  .hero-intro button:hover {
+    box-shadow: 0 0 80px #9064ff;
+    transform: translateY(-4px) scale(1.04);
+  }
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 0.9s cubic-bezier(.55,1.38,.48,.99);
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .feature-section {
+    display: flex;
+    gap: 32px;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto 100px auto; /* increased margin here */
+    flex-wrap: wrap;
+  }
+  .feature-section .left-visual {
+    flex: 1 1 420px;
+    position: relative;
+    background: linear-gradient(120deg,#322749 80%,#321c60 100%);
+    border-radius: 32px;
+    box-shadow: 0 0 55px #27208699;
+    min-width: 340px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .feature-section .left-visual img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.34;
+  }
+  .feature-section .left-visual .overlay {
+    position: relative;
+    padding: 48px 34px 34px 34px;
+    z-index: 2;
+    color: #fff;
+    text-align: left;
+  }
+  .feature-section .left-visual h2 {
+    font-size: 2.08rem;
+    margin-bottom: 12px;
+    font-weight: 900;
+    line-height: 1.19;
+  }
+  .feature-section .left-visual p {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #e0ddff;
+  }
+  .feature-section .right-info {
+    flex: 1 1 330px;
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    min-width: 280px;
+  }
+  .feature-section .right-info .info-block {
+    background: #261f51;
+    border-radius: 22px;
+    box-shadow: 0 0 24px #533ee388;
+    padding: 37px 28px;
+  }
+  .feature-section .right-info .info-block h3 {
+    font-size: 1.13rem;
+    color: #f5ebff;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  .feature-section .right-info .info-block p {
+    color: #dacfff;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .feature-section .right-info .tech-stack-block {
+    background: #261f51;
+    border-radius: 22px;
+    box-shadow: 0 0 19px #533ee377;
+    padding: 28px 22px;
+  }
+  .feature-section .right-info .tech-stack-block h3 {
+    font-size: 1.13rem;
+    color: #dfdeff;
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+  .feature-section .right-info .tech-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .feature-section .right-info .tech-skills span {
+    background: #4636a3;
+    color: #ede6fe;
+    padding: 9px 24px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.01rem;
+  }
+  .ai-approach-heading {
+    font-size: 2.1rem;
+    text-align: center;
+    color: #e6defe;
+    margin: 90px auto 60px auto; /* bigger margin to separate from work and contact */
+    font-weight: 900;
+    letter-spacing: -1px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+    max-width: 900px;
+  }
+  .ai-approach-heading.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .about-approach-phases {
+    max-width: 900px;
+    margin: 0 auto 90px auto; /* bigger margin before next section */
+    display: flex;
+    justify-content: space-around;
+    gap: 32px;
+    user-select: none;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease;
+  }
+  .about-approach-phases.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .phase-block {
+    width: 29%;
+    background: #2d2572;
+    border-radius: 20px;
+    padding: 28px 15px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0 35px #927eee66;
+    transition: box-shadow 0.3s ease;
+  }
+  .phase-block:hover,
+  .phase-block:focus {
+    box-shadow: 0 0 48px #b9a0fccc;
+  }
+  .phase-block h3 {
+    font-weight: 900;
+    color: #bbaef3;
+    margin-bottom: 0;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+  }
+  .desc {
+    opacity: 1;
+    max-height: none;
+    overflow: visible;
+    color: #d7ceff;
+    font-weight: 600;
+    line-height: 1.32;
+    margin-top: 15px;
+    font-size: 0.99rem;
+    transition: none;
+  }
+  section.cta {
+    background: linear-gradient(90deg, #3d3c72, #0d0956);
+    max-width: 600px;
+    padding: 40px 20px 70px;
+    margin: 0 auto 100px;
+    border-radius: 30px;
+    box-shadow: 0 0 70px #6e58ff88;
+    color: #dacfef;
+    text-align: center;
+    user-select: text;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease;
+  }
+  section.cta.visible {
+    opacity: 1;
+    transform: none;
+  }
+  section.cta button {
+    border: none;
+    background: #a894ff;
+    color: #2a1d76;
+    font-weight: 900;
+    font-size: 1.3rem;
+    padding: 16px 46px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 40px #a894ffa8;
+    transition: 0.3s all ease;
+  }
+  section.cta button:hover {
+    background: #7e5fff;
+    box-shadow: 0 0 65px #7e5fffcc;
+  }
+  .final-cta-section {
+    padding: 90px 14px 80px 14px;
+    background: none;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease;
+    max-width: 1000px;
+    margin: auto;
+  }
+  .final-cta-section.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .final-cta-section h2 {
+    font-size: 2.45rem;
+    font-weight: 900;
+    color: #f2edff;
+    line-height: 1.18;
+    margin-bottom: 20px;
+  }
+  .final-cta-section p {
+    color: #bab4db;
+    font-size: 1.23rem;
+    margin-bottom: 38px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .final-cta-section a.cta-btn {
+    display: inline-block;
+    background: transparent;
+    color: #ece2ff;
+    border: 1.6px solid #ad9cff;
+    padding: 17px 38px;
+    border-radius: 16px;
+    font-size: 1.19rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 0 25px #a394ff45;
+  }
+  .final-cta-section a.cta-btn:hover {
+    background: #a894ff22;
+    transform: scale(1.04);
+  }
+  .final-cta-section .cta-socials {
+    margin-top: 60px;
+    text-align: center;
+  }
+  .final-cta-section .cta-socials a {
+    margin: 0 18px;
+    display: inline-block;
+    box-shadow: 0 0 18px #7f4dff55, 0 0 0 #fff;
+    border-radius: 10px;
+    background: linear-gradient(120deg, #7f4dff 30%, #9e88f7 90%);
+    padding: 2px;
+    transition: transform 0.16s, box-shadow 0.29s;
+  }
+  .final-cta-section .cta-socials a:hover {
+    box-shadow: 0 0 42px #8b46ff, 0 0 10px #e9e7ff88;
+    transform: scale(1.15);
+    background: linear-gradient(120deg, #a68cff 30%, #7d46ff 100%);
+  }
+  .final-cta-section .cta-socials img {
+    width: 34px;
+    height: 34px;
+    vertical-align: middle;
+    border-radius: 8px;
+    background: transparent;
+    padding: 3px;
+  }
+  footer {
+    padding: 30px 0 28px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #bca6f8;
+    user-select: none;
+    background: none !important;
+  }
+  @media (max-width: 900px) {
+    header {
+      height: 70px;
+      padding: 0 10px;
+    }
+    .hero-intro {
+      margin-top: 100px;
+      padding: 32px 10px 12px 10px;
+    }
+    .hero-intro h1 {
+      font-size: 1.52rem;
+    }
+    .feature-section {
+      flex-direction: column;
+      gap: 28px;
+    }
+    .feature-section .left-visual {
+      min-height: 210px;
+    }
+    .feature-section .right-info {
+      min-width: unset;
+    }
+    .ai-approach-heading {
+      font-size: 1.3rem;
+    }
+    section.about-approach-phases {
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+    .phase-block {
+      width: 85%;
+    }
+    .final-cta-section h2 {
+      font-size: 1.3rem;
+    }
+    .final-cta-section p {
+      font-size: 1.06rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav aria-label="Primary Navigation">
+    <ul id="navList">
+      <li><a href="#heroIntro" tabindex="0">Home</a></li>
+      <li><a href="#mainContent" tabindex="0">Work</a></li>
+      <li><a href="#contactForm" tabindex="0">Contact</a></li>
+    </ul>
+  </nav>
+  <button id="themeToggle" aria-label="Toggle Dark/Light Theme" title="Toggle Dark/Light Theme">
+    Light Mode
+  </button>
+</header>
+<main>
+  <section class="hero-intro" id="heroIntro">
+    <h1>
+      Powering Artificial Intelligence & Machine Learning<br />
+      with Research-Driven Engineering
+    </h1>
+    <h2>Hi! I'm Alla Sankar Anudeep Reddy,<br />an AI/ML Engineer from India.</h2>
+    <h3>Building next-gen intelligent applications by blending data, mathematics, and creative problem solving.</h3>
+    <button onclick="document.getElementById('mainContent').scrollIntoView({behavior:'smooth'});">
+      Discover my work 📧
+    </button>
+  </section>
+  <div class="container" id="mainContent">
+    <section class="feature-section animate-on-scroll">
+      <div class="left-visual">
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="AI abstract" />
+        <div class="overlay">
+          <h2>
+            Building intelligent, data-driven solutions<br />
+            from research to real-world impact.
+          </h2>
+          <p>
+            Turning data into insight with Artificial Intelligence, Machine Learning & Deep Learning.
+          </p>
+        </div>
+      </div>
+      <div class="right-info">
+        <div class="info-block">
+          <h3>Connecting the World through AI</h3>
+          <p>
+            Delivering real value to people and organizations by automating workflows, extracting patterns, and powering innovation with data.
+          </p>
+        </div>
+        <div class="tech-stack-block">
+          <h3>My AI/ML Tech Stack</h3>
+          <div class="tech-skills">
+            <span>Programming (Python)</span>
+            <span>Mathematics & Statistics</span>
+            <span>Machine Learning Algorithms</span>
+            <span>Deep Learning</span>
+            <span>Data Processing</span>
+            <span>MLOps & Model Deployment</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <h2 class="ai-approach-heading animate-on-scroll">How I Tackle AI Projects</h2>
+    <section class="about-approach-phases animate-on-scroll">
+      <div class="phase-block" tabindex="0">
+        <h3>Phase 1</h3>
+        <div class="desc">Analyze datasets, preprocess data, and design machine learning models for accuracy and efficiency.</div>
+      </div>
+      <div class="phase-block" tabindex="0">
+        <h3>Phase 2</h3>
+        <div class="desc">Develop AI pipelines, implement supervised and unsupervised learning algorithms, and optimize neural networks.</div>
+      </div>
+      <div class="phase-block" tabindex="0">
+        <h3>Phase 3</h3>
+        <div class="desc">Deploy models to cloud services, automate workflows, and monitor live AI/ML model performance.</div>
+      </div>
+    </section>
+    <section id="contactForm" class="cta container animate-on-scroll">
+      <h2>Get in touch</h2>
+      <form id="contact" method="POST" action="https://formspree.io/f/mgebzbro" style="max-width:550px; margin:auto; display:flex; flex-direction:column; gap:20px;">
+        <input type="text" name="name" placeholder="Your name" required aria-label="Your name" style="padding: 12px 20px; border-radius: 12px; border: none; font-size:1rem;" />
+        <input type="email" name="email" placeholder="Your email" required aria-label="Your email" style="padding: 12px 20px; border-radius: 12px; border: none; font-size:1rem;" />
+        <textarea name="message" rows="5" placeholder="Your message" required aria-label="Your message" style="padding: 12px 20px; border-radius: 12px; border: none; font-size:1rem; resize: vertical;"></textarea>
+        <button type="submit" style="padding: 14px 0; border: none; border-radius: 30px; background: #7e5fff; color: white; font-weight: 900; font-size: 1.1rem; cursor: pointer; box-shadow: 0 0 45px #7e5fff; transition: background 0.3s;">Send Message</button>
+      </form>
+    </section>
+    <section class="final-cta-section animate-on-scroll">
+      <h2>
+        Ready to accelerate your journey <br> with advanced AI and machine learning solutions?
+      </h2>
+      <p>
+        Let's connect and explore how AI can turn your toughest challenges into future-ready opportunities.
+      </p>
+      <a class="cta-btn" href="mailto:sankaranudeep2007@gmail.com">
+        Contact Me&nbsp;&rarr;
+      </a>
+      <div class="cta-socials">
+        <a href="https://github.com/Sankar-2025" target="_blank" title="GitHub">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+        </a>
+        <a href="https://www.linkedin.com/in/alla-sankar-anudeep-reddy-b1226637a/" target="_blank" title="LinkedIn">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" />
+        </a>
+      </div>
+    </section>
+  </div>
+</main>
+<footer>
+  &copy; 2025 Alla Sankar Anudeep Reddy
+</footer>
+<script>
+  // Animate on scroll
+  const revealEls = document.querySelectorAll('.animate-on-scroll');
+  function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+    for (const el of revealEls) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < windowHeight * 0.85) {
+        el.classList.add('visible');
+      }
+    }
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+  // Dark/Light Mode toggle with localStorage and actual theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const bodyEl = document.body;
+
+  function setTheme(theme) {
+    if (theme === 'light') {
+      bodyEl.classList.add('light-mode');
+      themeToggle.textContent = 'Dark Mode';
+    } else {
+      bodyEl.classList.remove('light-mode');
+      themeToggle.textContent = 'Light Mode';
+    }
+    localStorage.setItem('theme', theme);
+  }
+  themeToggle.addEventListener('click', function () {
+    if (bodyEl.classList.contains('light-mode')) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  });
+
+  // On load set stored theme or default dark
+  const storedTheme = localStorage.getItem('theme') || 'dark';
+  setTheme(storedTheme);
+</script>
+</body>
+</html>
